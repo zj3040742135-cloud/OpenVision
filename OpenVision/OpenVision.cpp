@@ -20,7 +20,9 @@ void OpenVision::text()
     tool->Run(r);
 
     int width = t->Inputs["Height"]->Get<int>();
+    t->Inputs["Height"]->Set(tool->Outputs["OutImage"]->Get<int>());
     qDebug() << "t.Height (bound to tool.width) =" << width;
+    qDebug() << "t.Height (bound to tool.height) =" << t->OutImage.height;
 }
 
 
