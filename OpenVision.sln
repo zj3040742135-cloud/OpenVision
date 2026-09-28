@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36401.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVision", "OpenVision\OpenVision.vcxproj", "{4438DD79-C30D-4711-9A2A-391465419C20}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolBase", "ToolBase\ToolBase.vcxproj", "{B37FEA12-0376-48E2-A230-CA4B84F85E3C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolBlockTool", "ToolBlockTool\ToolBlockTool.vcxproj", "{CA36C0DB-059E-415E-A9A4-2B7A74F51C25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4438DD79-C30D-4711-9A2A-391465419C20}.Debug|x64.ActiveCfg = Debug|x64
+		{4438DD79-C30D-4711-9A2A-391465419C20}.Debug|x64.Build.0 = Debug|x64
+		{4438DD79-C30D-4711-9A2A-391465419C20}.Release|x64.ActiveCfg = Release|x64
+		{4438DD79-C30D-4711-9A2A-391465419C20}.Release|x64.Build.0 = Release|x64
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C}.Debug|x64.ActiveCfg = Debug|x64
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C}.Debug|x64.Build.0 = Debug|x64
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C}.Release|x64.ActiveCfg = Release|x64
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C}.Release|x64.Build.0 = Release|x64
+		{CA36C0DB-059E-415E-A9A4-2B7A74F51C25}.Debug|x64.ActiveCfg = Debug|x64
+		{CA36C0DB-059E-415E-A9A4-2B7A74F51C25}.Debug|x64.Build.0 = Debug|x64
+		{CA36C0DB-059E-415E-A9A4-2B7A74F51C25}.Release|x64.ActiveCfg = Release|x64
+		{CA36C0DB-059E-415E-A9A4-2B7A74F51C25}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DF8559B-F781-45BE-98E3-55CF5DE648F2}
+	EndGlobalSection
+EndGlobal
