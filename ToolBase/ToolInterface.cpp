@@ -12,7 +12,6 @@ ToolInterface::~ToolInterface()
 void ToolInterface::SetToolSDK(AlgorithmType sdkType)
 {
 }
-
 ToolFactory& ToolFactory::Instance()
 {
 	static ToolFactory factory;

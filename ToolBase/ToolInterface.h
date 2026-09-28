@@ -70,8 +70,8 @@ public:
 	virtual void Load() = 0;
 	virtual bool AddInput(std::string VarName, ToolInOutVar var) = 0;
 	virtual bool AddOutput(std::string VarName, ToolInOutVar var) = 0;
-	virtual nlohmann::json ToJson() const = 0;
-	virtual bool FromJson(const nlohmann::json& j) = 0;
+	virtual nlohmann::json ToJson() const =0;
+	virtual bool FromJson(const nlohmann::json& j) =0;
 public:
 	ToolInterface();
 	virtual ~ToolInterface();

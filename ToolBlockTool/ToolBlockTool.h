@@ -9,7 +9,7 @@
 #include<string>
 #include<vector>
 #include<memory>
-
+#include"nlohmann/json.hpp"
 struct ConnectionsInfo
 {
 	std::string FromToolName;
@@ -31,6 +31,10 @@ class TOOLBLOCKTOOL_API ToolBlockTool :public ToolInterface
 public:
 	ToolBlockTool();
 	~ToolBlockTool();
+	ToolBlockTool(const ToolBlockTool&) = delete;
+	ToolBlockTool& operator=(const ToolBlockTool&) = delete;
+	ToolBlockTool(ToolBlockTool&&) = default;
+	ToolBlockTool& operator=(ToolBlockTool&&) = default;
 public:
 	std::map<std::string, std::unique_ptr <ToolInterface>> Tools;
 	std::vector<ConnectionsInfo> ToolConnections;
@@ -43,14 +47,15 @@ public:
 	void Load() override;
 	bool AddInput(std::string VarName, ToolInOutVar var) override;
 	bool AddOutput(std::string VarName, ToolInOutVar var) override;
+	nlohmann::json ToJson() const override;
+	bool FromJson(const nlohmann::json& j) override;
 public:
 	bool AddTool(ToolType _type);
 	bool RemoveTool(std::string _toolName);
 	bool AddConnection(std::string FromTool, std::string FromToolNode, std::string ToTool, std::string ToToolNode);
 	bool HasConnection(const ConnectionsInfo info);
 	bool RemoveConnection(std::string const _toolName);
-	nlohmann::json ToJson() const override;
-	bool FromJson(const nlohmann::json& j) override;
+	
 private:
 	int CreateToolName(ToolType _type);
 	std::string CanToolName(std::string name, int i);

@@ -151,25 +151,24 @@ bool ToolBlockTool::AddConnection(std::string FromTool, std::string FromToolNode
 	conn.FormToolNodeName = FromToolNode;
 	conn.ToToolName = ToTool;
 	conn.ToToolNodeName = ToToolNode;
-	bool isConnection = HasConnection(conn);
-	if (isConnection)
-	{
-		ToolConnections.push_back(conn);
-		TargetTool->Inputs[ToToolNode]->BindingInfo = SourceTool->Outputs[FromToolNode];
-		TargetTool->Inputs[ToToolNode]->Binding = true;
-	}
-
+	bool isDuplicate = HasConnection(conn);
+	if (isDuplicate)
+		return false;
+	ToolConnections.push_back(conn);
+	TargetTool->Inputs[ToToolNode]->BindingInfo = SourceTool->Outputs[FromToolNode];
+	TargetTool->Inputs[ToToolNode]->Binding = true;
+	return true;
 }
 bool ToolBlockTool::HasConnection(const ConnectionsInfo info)
 {
-	for (ConnectionsInfo item : ToolConnections)
+	for (const ConnectionsInfo& item : ToolConnections)
 	{
 		if (item.FromToolName == info.FromToolName && item.FormToolNodeName == info.FormToolNodeName && item.ToToolName == info.ToToolName && item.ToToolNodeName == info.ToToolNodeName)
 		{
-			return false;
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 bool ToolBlockTool::RemoveConnection(std::string const _toolName)
 {
