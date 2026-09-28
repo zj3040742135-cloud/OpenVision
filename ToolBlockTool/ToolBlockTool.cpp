@@ -1,11 +1,11 @@
 #include "pch.h"
 #include "ToolBlockTool.h"
 #include<fstream>
-REGISTER_TOOL(ToolBlockTool, ToolBlockTool);
+REGISTER_TOOL(ToolType::Tool_ToolBlockTool, ToolBlockTool);
 ToolBlockTool::ToolBlockTool()
 {
 	ToolName = "ToolBlock";
-	this->m_toolType = ToolType::ToolBlockTool;
+	this->m_toolType = ToolType::Tool_ToolBlockTool;
 	OWner = nullptr;
 	Inputs.clear();
 	Outputs.clear();
@@ -65,28 +65,14 @@ void ToolBlockTool::Save()
 void ToolBlockTool::Load()
 {
 }
-bool ToolBlockTool::AddInput(std::string VarName, ToolInOutVar var)
+bool ToolBlockTool::AddInput(std::string VarName, void* var, VarType type)
 {
-	if (Inputs.contains(VarName))
-		return false;
-	ToolInOutVar input;
-	input.BindingInfo = &var;
-	input.Binding = true;
-	input.ToolVarType = var.ToolVarType;
-	input.BindingName = var.BindingName;
-	Inputs[VarName] = &input;
+	
 	return true;
 }
-bool ToolBlockTool::AddOutput(std::string VarName, ToolInOutVar var)
+bool ToolBlockTool::AddOutput(std::string VarName, void* var, VarType type)
 {
-	if (Outputs.contains(VarName))
-		return false;
-	ToolInOutVar Output;
-	Output.BindingInfo = &var;
-	Output.Binding = true;
-	Output.ToolVarType = var.ToolVarType;
-	Output.BindingName = var.BindingName;
-	Inputs[VarName] = &Output;
+	
 	return true;
 }
 nlohmann::json ToolBlockTool::ToJson() const

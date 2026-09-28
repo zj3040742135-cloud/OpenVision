@@ -36,11 +36,11 @@ enum VarType
 };
 enum ToolType
 {
-	UNDEFINED = 0,
-	ImageSourceTool = 1,
-	FixtureTool = 2,
-	BlobTool = 3,
-	ToolBlockTool = 4
+	Tool_UNDEFINED = 0,
+	Tool_ImageSourceTool = 1,
+	Tool_FixtureTool = 2,
+	Tool_BlobTool = 3,
+	Tool_ToolBlockTool = 4
 };
 struct ToolInOutVar
 {
@@ -49,6 +49,27 @@ struct ToolInOutVar
 	bool Binding = false;
 	VarType ToolVarType = TYPE_UNDEFINED;
 	ToolInOutVar* BindingInfo = nullptr;
+
+	// Walk the BindingInfo chain to find the ultimate source node
+	ToolInOutVar* Resolve()
+	{
+		ToolInOutVar* node = this;
+		while (node->Binding && node->BindingInfo)
+			node = node->BindingInfo;
+		return node;
+	}
+
+	template<typename T>
+	T& Get()
+	{
+		return *static_cast<T*>(Resolve()->value);
+	}
+
+	template<typename T>
+	void Set(const T& v)
+	{
+		*static_cast<T*>(Resolve()->value) = v;
+	}
 };
 
 class TOOLBASE_API ToolInterface
@@ -56,20 +77,13 @@ class TOOLBASE_API ToolInterface
 public:
 	std::string ToolName;
 	ToolInterface* OWner;
-	ToolType m_toolType = UNDEFINED; 
+	ToolType m_toolType = Tool_UNDEFINED;
 	AlgorithmType algorithmType = AlgorithmType::OPENCV;
 	std::map<std::string, ToolInOutVar*> Inputs;
 	std::map<std::string, ToolInOutVar*> Outputs;
 	ToolResult Result;
-	ToolImage InputImage;
 public:
 	virtual bool  Run(ToolResult& _toolresult) = 0;
-	virtual void SaveToVpp(std::string file) = 0;
-	virtual void LoadFromVpp(std::string file) = 0;
-	virtual void Save() = 0;
-	virtual void Load() = 0;
-	virtual bool AddInput(std::string VarName, ToolInOutVar var) = 0;
-	virtual bool AddOutput(std::string VarName, ToolInOutVar var) = 0;
 	virtual nlohmann::json ToJson() const =0;
 	virtual bool FromJson(const nlohmann::json& j) =0;
 public:

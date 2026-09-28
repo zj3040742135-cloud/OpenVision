@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "ImageSourceTool.h"
-
+#include<iostream>
 ImageSourceTool::ImageSourceTool()
 {
+
+	AddInput("OutImage", &this->OutImage.width, VarType::TYPE_IMAGE);
+	AddOutput("OutImage", &this->OutImage.width, VarType::TYPE_INT);
 }
 
 ImageSourceTool::~ImageSourceTool()
@@ -11,32 +14,7 @@ ImageSourceTool::~ImageSourceTool()
 
 bool ImageSourceTool::Run(ToolResult& _toolresult)
 {
-	return false;
-}
-
-void ImageSourceTool::SaveToVpp(std::string file)
-{
-}
-
-void ImageSourceTool::LoadFromVpp(std::string file)
-{
-}
-
-void ImageSourceTool::Save()
-{
-}
-
-void ImageSourceTool::Load()
-{
-}
-
-bool ImageSourceTool::AddInput(std::string VarName, ToolInOutVar var)
-{
-	return false;
-}
-
-bool ImageSourceTool::AddOutput(std::string VarName, ToolInOutVar var)
-{
+	OutImage.width++;
 	return false;
 }
 
@@ -48,4 +26,24 @@ nlohmann::json ImageSourceTool::ToJson() const
 bool ImageSourceTool::FromJson(const nlohmann::json& j)
 {
 	return false;
+}
+
+bool ImageSourceTool::AddInput(std::string VarName, void* var,  VarType type)
+{
+	ToolInOutVar* input=new ToolInOutVar();
+	input->value = var;
+	input->Binding = false;
+	input->ToolVarType = type;
+	Inputs[VarName] = input;
+	return true;
+}
+
+bool ImageSourceTool::AddOutput(std::string VarName, void* var, VarType type)
+{
+	ToolInOutVar* output = new ToolInOutVar();
+	output->value = var;
+	output->Binding = false;
+	output->ToolVarType = type;
+	Outputs[VarName] = output;
+	return true;
 }

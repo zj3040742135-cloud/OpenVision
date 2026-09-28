@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<UI version="4.0" >
+<ui version="4.0">
  <class>OpenVisionClass</class>
- <widget class="QMainWindow" name="OpenVisionClass" >
-  <property name="objectName" >
-   <string notr="true">OpenVisionClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QMainWindow" name="OpenVisionClass">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -13,17 +10,28 @@
     <height>400</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>OpenVision</string>
-  </property>  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>70</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+  </widget>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-   <include location="OpenVision.qrc"/>
+  <include location="OpenVision.qrc"/>
  </resources>
  <connections/>
-</UI>
+</ui>

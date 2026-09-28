@@ -41,12 +41,7 @@ public:
 
 public:
 	bool Run(ToolResult& _toolresult) override;
-	void SaveToVpp(std::string file) override;
-	void LoadFromVpp(std::string file) override;
-	void Save() override;
-	void Load() override;
-	bool AddInput(std::string VarName, ToolInOutVar var) override;
-	bool AddOutput(std::string VarName, ToolInOutVar var) override;
+
 	nlohmann::json ToJson() const override;
 	bool FromJson(const nlohmann::json& j) override;
 public:
@@ -59,4 +54,11 @@ public:
 private:
 	int CreateToolName(ToolType _type);
 	std::string CanToolName(std::string name, int i);
+public:
+	void SaveToVpp(std::string file);
+	void LoadFromVpp(std::string file);
+	void Save();
+	void Load();
+	bool AddInput(std::string VarName, void* var,VarType type);
+	bool AddOutput(std::string VarName, void* var, VarType type);
 };

@@ -1,8 +1,8 @@
 #pragma once
 #ifdef TOOL_EXPORTS
-#define TOOL_API __declspec(dllexport)//dllimport
+#define TOOL_API __declspec(dllexport)
 #else
-#define IMAGESOURCETOOL_API __declspec(dllexport)//dllexport
+#define TOOL_API __declspec(dllexport)
 #endif
 #include"ToolInterface.h"
 #include"nlohmann/json.hpp"
@@ -20,13 +20,11 @@ public:
 	ToolImage OutImage;
 public:
 	bool Run(ToolResult& _toolresult) override;
-	void SaveToVpp(std::string file) override;
-	void LoadFromVpp(std::string file) override;
-	void Save() override;
-	void Load() override;
-	bool AddInput(std::string VarName, ToolInOutVar var) override;
-	bool AddOutput(std::string VarName, ToolInOutVar var) override;
+	
 	nlohmann::json ToJson() const override;
 	bool FromJson(const nlohmann::json& j) override;
+public:
+	bool AddInput(std::string VarName, void* var, VarType type) ;
+	bool AddOutput(std::string VarName, void* var, VarType type) ;
 };
 
