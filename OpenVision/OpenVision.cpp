@@ -1,10 +1,11 @@
-#include "OpenVision.h"
+﻿#include "OpenVision.h"
 #include<qdebug.h>
 OpenVision::OpenVision(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
     tool = new ImageSourceTool();
+    
      t = new  ImageSourceTool();
      t->AddInput("Height", &t->OutImage.height, VarType::TYPE_INT);
      t->Inputs["Height"]->Binding = true;

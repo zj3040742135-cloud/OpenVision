@@ -14,6 +14,7 @@ ImageSourceTool::~ImageSourceTool()
 
 bool ImageSourceTool::Run(ToolResult& _toolresult)
 {
+
 	OutImage.width++;
 	return false;
 }

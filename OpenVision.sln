@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolBlockTool", "ToolBlockT
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tool", "Tool\Tool.vcxproj", "{9A8AA592-2F32-4A6C-B893-96065963FEC9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Process_Visualization", "Process_Visualization\Process_Visualization.vcxproj", "{D72CB5AC-B10E-4C79-9E14-853BDBA65250}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,10 @@ Global
 		{9A8AA592-2F32-4A6C-B893-96065963FEC9}.Debug|x64.Build.0 = Debug|x64
 		{9A8AA592-2F32-4A6C-B893-96065963FEC9}.Release|x64.ActiveCfg = Release|x64
 		{9A8AA592-2F32-4A6C-B893-96065963FEC9}.Release|x64.Build.0 = Release|x64
+		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Debug|x64.ActiveCfg = Debug|x64
+		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Debug|x64.Build.0 = Debug|x64
+		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Release|x64.ActiveCfg = Debug|x64
+		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Release|x64.Build.0 = Debug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
