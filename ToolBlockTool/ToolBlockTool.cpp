@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "ToolBlockTool.h"
 #include<fstream>
 REGISTER_TOOL(ToolType::Tool_ToolBlockTool, ToolBlockTool);
@@ -34,6 +34,7 @@ bool ToolBlockTool::Run(ToolResult& _toolresult)
 		this->Result.runTime += result.runTime;
 		this->Result.result = isSucesses ? ResultType::TYPE_SUCESSES : ResultType::TYPE_ERROR;
 	}
+	TriggerEvent();
 	return isSucesses;
 }
 void ToolBlockTool::SaveToVpp(std::string filePath)
@@ -50,6 +51,7 @@ void ToolBlockTool::SaveToVpp(std::string filePath)
 void ToolBlockTool::LoadFromVpp(std::string file)
 {
 	Tools.clear();
+	TriggerEvent();
 }
 void ToolBlockTool::Save()
 {
@@ -64,16 +66,30 @@ void ToolBlockTool::Save()
 }
 void ToolBlockTool::Load()
 {
+	TriggerEvent();
 }
 bool ToolBlockTool::AddInput(std::string VarName, void* var, VarType type)
 {
-	
+	TriggerEvent();
 	return true;
 }
 bool ToolBlockTool::AddOutput(std::string VarName, void* var, VarType type)
 {
-	
+	TriggerEvent();
 	return true;
+}
+void ToolBlockTool::RegistCallBack(CallBack cb)
+{
+	m_cb = std::move(cb);
+}
+void ToolBlockTool::ClearCallBack()
+{
+	m_cb = nullptr;
+}
+void ToolBlockTool::TriggerEvent()
+{
+	if (m_cb)
+		m_cb();
 }
 nlohmann::json ToolBlockTool::ToJson() const
 {
@@ -115,6 +131,7 @@ bool ToolBlockTool::AddTool(ToolType _type)
 	pTool->ToolName = CanToolName(pTool->ToolName, CreateToolName(_type));
 	std::unique_ptr< ToolInterface> t(pTool);
 	Tools[pTool->ToolName] = std::move(t);
+	TriggerEvent();
 	return true;
 }
 bool ToolBlockTool::RemoveTool(std::string const _toolName)
@@ -122,6 +139,7 @@ bool ToolBlockTool::RemoveTool(std::string const _toolName)
 	if (!Tools.contains(_toolName))
 		return false;
 	Tools.erase(_toolName);
+	TriggerEvent();
 	return true;
 }
 bool ToolBlockTool::AddConnection(std::string FromTool, std::string FromToolNode, std::string ToTool, std::string ToToolNode)
@@ -143,6 +161,7 @@ bool ToolBlockTool::AddConnection(std::string FromTool, std::string FromToolNode
 	ToolConnections.push_back(conn);
 	TargetTool->Inputs[ToToolNode]->BindingInfo = SourceTool->Outputs[FromToolNode];
 	TargetTool->Inputs[ToToolNode]->Binding = true;
+	TriggerEvent();
 	return true;
 }
 bool ToolBlockTool::HasConnection(const ConnectionsInfo info)
@@ -177,6 +196,7 @@ bool ToolBlockTool::RemoveConnection(std::string const _toolName)
 			++it;
 		}
 	}
+	TriggerEvent();
 	return true;
 }
 int ToolBlockTool::CreateToolName(ToolType _type)

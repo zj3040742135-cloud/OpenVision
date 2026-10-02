@@ -31,6 +31,11 @@ public:
 	std::vector<ModuldeConnection> connections;
 	std::map<std::string, std::unique_ptr<ModuleBase>> Modules;
 	std::string ProcessName;
+	// 宿主程序调用的公开接口
+	void AddToolModule();
+	void AddModuleInPort();
+	void AddModuleOutPort();
+	void Run();
 private:
 	QPoint ClickLocation;
 	ModuleBase* m_pSelectedModule = nullptr;
@@ -53,7 +58,6 @@ protected:
 	void mouseMoveEvent(QMouseEvent* event) override;
 	void paintEvent(QPaintEvent* event) override;
 private:
-	void AddToolModule();
 	void AddStartlModule();
 
 	// 端口命中检测：返回是否命中、所在模块名、是否输出端口、端口索引
@@ -76,7 +80,4 @@ private:
 	void DeleteSelectedConnection();
 	// 删除选中的模块（同时清理相关连线）
 	void DeleteSelectedModule();
-
-	void AddModuleInPort();
-	void AddModuleOutPort();
 };

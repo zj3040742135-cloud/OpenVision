@@ -1,5 +1,6 @@
-#include "OpenVision.h"
+﻿#include "OpenVision.h"
 #include<qdebug.h>
+#include"ProcessFrame.h"
 OpenVision::OpenVision(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -17,6 +18,10 @@ OpenVision::~OpenVision()
 {}
 void OpenVision::text()
 {
+
+    
+    
+    ui.frame->Run();
     ToolResult r;
     tool->Run(r);
 

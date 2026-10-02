@@ -12,6 +12,10 @@ public:
 	ToolModule();
 	~ToolModule();
 public:
+	ToolBlockTool* m_tool = nullptr;
+	ToolResult RunSucesses;
+public:
 	 void Show() override;
+	 void Run()override;
 };
 

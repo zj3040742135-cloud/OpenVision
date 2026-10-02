@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifdef TOOLBLOCKTOOL_EXPORTS
 #define TOOLBLOCKTOOL_API __declspec(dllexport)
 #else
@@ -41,7 +41,6 @@ public:
 
 public:
 	bool Run(ToolResult& _toolresult) override;
-
 	nlohmann::json ToJson() const override;
 	bool FromJson(const nlohmann::json& j) override;
 public:
@@ -61,4 +60,12 @@ public:
 	void Load();
 	bool AddInput(std::string VarName, void* var,VarType type);
 	bool AddOutput(std::string VarName, void* var, VarType type);
+public:
+	using CallBack = std::function<void()>;
+	void RegistCallBack(CallBack cb);
+	void ClearCallBack();
+private:
+	CallBack m_cb;
+	void TriggerEvent();
+
 };

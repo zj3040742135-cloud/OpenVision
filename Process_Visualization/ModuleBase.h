@@ -36,5 +36,6 @@ public:
 	void AddInport();
 	void AddOutPort();
 public:
+	virtual void Run();
 	virtual void Show();
 };

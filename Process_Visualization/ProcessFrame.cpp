@@ -1,4 +1,4 @@
-#include "ProcessFrame.h"
+﻿#include "ProcessFrame.h"
 #include <QPainter>
 #include <QMouseEvent>
 #include <QAction>
@@ -489,6 +489,14 @@ void ProcessFrame::AddModuleOutPort()
 		return;
 	m_pSelectedModule->AddOutPort();
 	this->update();
+}
+void ProcessFrame::Run()
+{
+	for (const auto& item : Modules)
+	{
+		const auto& module = item.second;
+		module->Run();
+	}
 }
 bool ProcessFrame::CanPlaceModule(const ModuleBase* mod, const QPoint& newTopLeft) const
 {

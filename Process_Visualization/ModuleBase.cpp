@@ -84,7 +84,10 @@ void ModuleBase::AddOutPort()
 		OutPorts.append(arrow);
 	}
 }
+void ModuleBase::Run()
+{
 
+}
 void ModuleBase::Show()
 {
 }
