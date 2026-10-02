@@ -1,4 +1,4 @@
-#include "ModuleBase.h"
+﻿#include "ModuleBase.h"
 ModuleBase::ModuleBase(QObject* parent)
 	: QObject(parent)
 {
@@ -49,4 +49,42 @@ void ModuleBase::Move(QPoint point)
 		OutPorts[i].ArrowLocation.setY(point.y() + (int)MainRectHeight + (int)OutPorts[i].ArrowHeight / 2);
 	}
 
+}
+
+void ModuleBase::AddInport()
+{
+	InPorts.clear();
+	InPort += 1;
+	int inSpacing = (int)MainRectWidth / qMax(1, InPort);
+	for (int i = 0; i < InPort; i++)
+	{
+		ModuleInOutPortArrow arrow;
+		arrow.ArrowHeight = 8;
+		arrow.ArrowWidth = 12;
+		// ArrowLocation 是箭头中心点，居中于所在槽位
+		arrow.ArrowLocation.setX(mainRect.x() + inSpacing * i + inSpacing / 2);
+		arrow.ArrowLocation.setY(mainRect.y() - (int)arrow.ArrowHeight / 2);
+		InPorts.append(arrow);
+	}
+
+}
+
+void ModuleBase::AddOutPort()
+{
+	OutPorts.clear();
+	OutPort += 1;
+	int outSpacing = (int)MainRectWidth / qMax(1, OutPort);
+	for (int i = 0; i < OutPort; i++)
+	{
+		ModuleInOutPortArrow arrow;
+		arrow.ArrowHeight = 8;
+		arrow.ArrowWidth = 12;
+		arrow.ArrowLocation.setX(mainRect.x() + outSpacing * i + outSpacing / 2);
+		arrow.ArrowLocation.setY(mainRect.y() + (int)MainRectHeight + (int)arrow.ArrowHeight / 2);
+		OutPorts.append(arrow);
+	}
+}
+
+void ModuleBase::Show()
+{
 }

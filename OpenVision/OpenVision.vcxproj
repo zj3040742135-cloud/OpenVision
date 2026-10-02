@@ -66,11 +66,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\OpenVision\Process_Visualization;D:\OpenVision\ToolBase;D:\OpenVision\Tool;D:\OpenVision\include;D:\OpenVision\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OpenVision\include;D:\OpenVision\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>D:\OpenVision\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D:\OpenVision\x64\Debug\Tool.lib;D:\OpenVision\x64\Debug\ToolBase.lib;opencv_world4100d.lib;D:\OpenVision\x64\Debug\Process_Visualization.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ToolBase.lib;Tool.lib;Process_Visualization.lib;opencv_world4100d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">

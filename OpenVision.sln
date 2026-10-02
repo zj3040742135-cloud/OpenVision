@@ -1,17 +1,35 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVision", "OpenVision\OpenVision.vcxproj", "{4438DD79-C30D-4711-9A2A-391465419C20}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C} = {B37FEA12-0376-48E2-A230-CA4B84F85E3C}
+		{CA36C0DB-059E-415E-A9A4-2B7A74F51C25} = {CA36C0DB-059E-415E-A9A4-2B7A74F51C25}
+		{9A8AA592-2F32-4A6C-B893-96065963FEC9} = {9A8AA592-2F32-4A6C-B893-96065963FEC9}
+		{D72CB5AC-B10E-4C79-9E14-853BDBA65250} = {D72CB5AC-B10E-4C79-9E14-853BDBA65250}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolBase", "ToolBase\ToolBase.vcxproj", "{B37FEA12-0376-48E2-A230-CA4B84F85E3C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolBlockTool", "ToolBlockTool\ToolBlockTool.vcxproj", "{CA36C0DB-059E-415E-A9A4-2B7A74F51C25}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C} = {B37FEA12-0376-48E2-A230-CA4B84F85E3C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tool", "Tool\Tool.vcxproj", "{9A8AA592-2F32-4A6C-B893-96065963FEC9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B37FEA12-0376-48E2-A230-CA4B84F85E3C} = {B37FEA12-0376-48E2-A230-CA4B84F85E3C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Process_Visualization", "Process_Visualization\Process_Visualization.vcxproj", "{D72CB5AC-B10E-4C79-9E14-853BDBA65250}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CA36C0DB-059E-415E-A9A4-2B7A74F51C25} = {CA36C0DB-059E-415E-A9A4-2B7A74F51C25}
+		{CD344EC3-C261-4BBB-B2AB-1E3892F30541} = {CD344EC3-C261-4BBB-B2AB-1E3892F30541}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolBlockControl", "ToolBlockControl\ToolBlockControl.vcxproj", "{CD344EC3-C261-4BBB-B2AB-1E3892F30541}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +57,10 @@ Global
 		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Debug|x64.Build.0 = Debug|x64
 		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Release|x64.ActiveCfg = Debug|x64
 		{D72CB5AC-B10E-4C79-9E14-853BDBA65250}.Release|x64.Build.0 = Debug|x64
+		{CD344EC3-C261-4BBB-B2AB-1E3892F30541}.Debug|x64.ActiveCfg = Debug|x64
+		{CD344EC3-C261-4BBB-B2AB-1E3892F30541}.Debug|x64.Build.0 = Debug|x64
+		{CD344EC3-C261-4BBB-B2AB-1E3892F30541}.Release|x64.ActiveCfg = Release|x64
+		{CD344EC3-C261-4BBB-B2AB-1E3892F30541}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

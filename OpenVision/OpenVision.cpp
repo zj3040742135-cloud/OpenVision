@@ -1,4 +1,4 @@
-﻿#include "OpenVision.h"
+#include "OpenVision.h"
 #include<qdebug.h>
 OpenVision::OpenVision(QWidget *parent)
     : QMainWindow(parent)

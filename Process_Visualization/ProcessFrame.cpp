@@ -27,6 +27,14 @@ ProcessFrame::ProcessFrame(QWidget* parent)
 	QAction* delModAct = new QAction("删除工具", this);
 	connect(delModAct, &QAction::triggered, this, &ProcessFrame::DeleteSelectedModule);
 	m_moduleMenu.addAction(delModAct);
+
+	QAction* addModuleInPort = new QAction("添加输入端子", this);
+	connect(addModuleInPort, &QAction::triggered, this, &ProcessFrame::AddModuleInPort);
+	m_moduleMenu.addAction(addModuleInPort);
+
+	QAction* addModuleOutPort = new QAction("添加输出端子", this);
+	connect(addModuleOutPort, &QAction::triggered, this, &ProcessFrame::AddModuleOutPort);
+	m_moduleMenu.addAction(addModuleOutPort);
 }
 
 ProcessFrame::~ProcessFrame()
@@ -163,6 +171,11 @@ void ProcessFrame::mouseReleaseEvent(QMouseEvent* event)
 void ProcessFrame::mouseDoubleClickEvent(QMouseEvent* event)
 {
 	QFrame::mouseDoubleClickEvent(event);
+	// dynamic_cast checks the dynamic type of the pointed object
+	if (ToolModule* toolModule = dynamic_cast<ToolModule*>(m_pSelectedModule))
+	{
+		toolModule->Show();
+	}
 }
 
 void ProcessFrame::mouseMoveEvent(QMouseEvent* event)
@@ -300,7 +313,7 @@ void ProcessFrame::paintEvent(QPaintEvent* event)
 
 void ProcessFrame::AddToolModule()
 {
-	ModuleBase* m = new ModuleBase();
+	ToolModule* m = new ToolModule();
 	m->CreateModule(ClickLocation, 1, 2);
 	m_toolCounter++;
 	std::string name = "debug_" + std::to_string(m_toolCounter);
@@ -463,6 +476,20 @@ void ProcessFrame::DeleteSelectedModule()
 	this->update();
 }
 
+void ProcessFrame::AddModuleInPort()
+{
+	if (!m_pSelectedModule)
+		return;
+	m_pSelectedModule->AddInport();
+	this->update();
+}
+void ProcessFrame::AddModuleOutPort()
+{
+	if (!m_pSelectedModule)
+		return;
+	m_pSelectedModule->AddOutPort();
+	this->update();
+}
 bool ProcessFrame::CanPlaceModule(const ModuleBase* mod, const QPoint& newTopLeft) const
 {
 	// 预测模块新位置的矩形
